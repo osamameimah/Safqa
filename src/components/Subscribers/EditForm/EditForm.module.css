@@ -1,0 +1,90 @@
+.formGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    direction: rtl;
+    padding: 14px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.inputGroup label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.inputGroup input,
+.inputGroup select {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 12px;
+    background: #5854a4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submitBtn:hover {
+    background: #47438a;
+}
+@media (max-width: 600px) {
+    .formGrid {
+        gap: 12px;
+        padding: 10px;
+    }
+
+    .inputGroup label {
+        font-size: 0.8rem;
+    }
+
+    .inputGroup input,
+    .inputGroup select {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+        border-radius: 7px;
+    }
+
+    .submitBtn {
+        font-size: 0.85rem;
+        padding: 10px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .formGrid {
+        gap: 10px;
+        padding: 8px;
+    }
+
+    .inputGroup label {
+        font-size: 0.75rem;
+    }
+
+    .inputGroup input,
+    .inputGroup select {
+        font-size: 0.75rem;
+        padding: 7px 9px;
+    }
+
+    .submitBtn {
+        font-size: 0.8rem;
+        padding: 9px;
+    }
+}

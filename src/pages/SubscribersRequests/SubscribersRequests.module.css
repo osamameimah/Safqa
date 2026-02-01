@@ -1,0 +1,34 @@
+.container { 
+    background-color: #f8f9fa; 
+    min-height: 100vh; 
+    direction: rtl; 
+     box-sizing: border-box; 
+    overflow-x: hidden;  
+} 
+
+.headerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+ }
+
+ .headerSection { margin: 20px 0; }
+
+ 
+ 
+ .modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 2000; }
+.modalCard { background: white; width: 90%; max-width: 500px; max-height: 90vh; border-radius: 20px; padding: 25px; display: flex; flex-direction: column; animation: zoomIn 0.3s ease; overflow: hidden; }
+.wideModal { max-width: 650px; }
+.modalHeader { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; flex-shrink: 0; }
+.closeBtn { background: none; border: none; font-size: 24px; cursor: pointer; color: #aaa; }
+.modalContent { flex-grow: 1; overflow-y: auto; padding-top: 15px; }
+
+ .approveView, .deleteView { text-align: center; padding: 20px; }
+.approveIcon { font-size: 3.5rem; margin-bottom: 15px; }
+.deleteIcon { font-size: 3.5rem; margin-bottom: 15px; }
+.confirmActions { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
+.successBtn { background: #27ae60; color: white; padding: 10px 25px; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; }
+.dangerBtn { background: #e74c3c; color: white; padding: 10px 25px; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; }
+.cancelBtn { background: #eee; padding: 10px 25px; border-radius: 10px; border: none; cursor: pointer; }
+
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }

@@ -1,0 +1,24 @@
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.logoImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.headerText h1 {
+  font-size: 18px;
+  color: #1e293b;
+  margin: 10px 0 5px;
+}
+
+.headerText p {
+  font-size: 14px;
+  color: #64748b;
+}

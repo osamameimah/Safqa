@@ -1,0 +1,164 @@
+ .adminLayout {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    direction: rtl;
+    background-color: #f1f5f9;
+    overflow: hidden;
+}
+
+ .sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: linear-gradient(180deg, #5b57a3 0%, #3730a3 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    transition: 0.3s ease;
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.adminLogo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.adminTitle {
+    font-size: 18px;
+    margin: 0;
+}
+
+ .navMenu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.navMenu a {
+    text-decoration: none;
+    color: #cbd5e1;
+    padding: 9px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s;
+ 
+}
+
+.navMenu a:hover,
+.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 20px;
+    min-width: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.linkText {
+    white-space: nowrap;
+}
+
+ .sidebarFooter {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.logoutBtn {
+    width: 100%;
+    background: #7454be;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+ .mainContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+ .menuBtn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 5px;
+    z-index: 2000;
+    background: #3730a3;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+ @media (max-width: 768px) {
+
+    .menuBtn {
+        display: block;
+    }
+
+     .sidebar {
+        width: 45px;
+        min-width: 45px;
+        padding: 20px 5px;
+    }
+
+    .linkText,
+    .adminTitle {
+        display: none;
+    }
+
+    .sidebarHeader {
+        justify-content: center;
+    }
+
+    .logoutBtn {
+        font-size: 0;
+        padding: 12px;
+    }
+
+    .logoutBtn::before {
+        content: "⎋";
+        font-size: 18px;
+    }
+
+     .sidebar.open {
+        width: 240px;
+    }
+
+    .sidebar.open .linkText,
+    .sidebar.open .adminTitle {
+        display: inline;
+    }
+
+    .sidebar.open .logoutBtn {
+        font-size: 14px;
+    }
+
+    .sidebar.open .logoutBtn::before {
+        content: "";
+    }
+}

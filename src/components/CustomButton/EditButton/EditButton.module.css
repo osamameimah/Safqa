@@ -1,0 +1,40 @@
+.btnEdit, .btnDelete {
+  padding: 6px 12px;
+  border-radius: 6px;  
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ .btnEdit {
+  background-color: #5854a4;
+  color: white;
+}
+.btnEdit:hover {
+  background-color: #46428a;
+  transform: translateY(-1px);
+}
+
+ .btnDelete {
+  background-color: #ef4444;  
+  color: #fee2e2;           
+  border: 1px solid #fecaca;
+}
+.btnDelete:hover {
+   color: white;
+  transform: translateY(-1px);
+}
+
+ @media (max-width: 600px) {
+  .btnEdit, .btnDelete {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    min-width: 50px;
+  }
+}

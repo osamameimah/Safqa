@@ -1,0 +1,223 @@
+.tableContainer {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+    direction: rtl;
+
+     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+ .customTable {
+    width: 100%;
+    border-collapse: collapse;
+
+     min-width: 900px;
+}
+
+ .customTable th {
+    background: #E8E7FF;
+    padding: 18px;
+    text-align: right;
+    color: #5854a4;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+ .customTable td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+ .userCell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #eeedff;
+    color: #5854a4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {
+    font-weight: 600;
+}
+
+.companyName {
+    font-size: 0.75rem;
+    color: #5854a4;
+}
+
+ .badgeActive {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.badgeExpired {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+ .actionButtons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btnInfo {
+    background: #5854a4;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btnEdit {
+    background: #c2892f;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btnDelete {
+    background: #e74c3c;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+ .tableContainer::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb {
+    background: #c7c5ff;
+    border-radius: 10px;
+}
+@media (max-width: 768px) {
+
+    .customTable th {
+        font-size: 0.8rem;
+        padding: 12px;
+    }
+
+    .customTable td {
+        font-size: 0.8rem;
+        padding: 10px 12px;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+
+    .companyName {
+        font-size: 0.7rem;
+    }
+
+    .badgeActive,
+    .badgeExpired {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+    .actionButtons {
+        gap: 6px;
+    }
+
+    .btnInfo,
+    .btnEdit,
+    .btnDelete {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+        border-radius: 6px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+ 
+
+  .customTable {
+    min-width: 550px;  
+  }  }
+
+  
+.noDataCell {
+    text-align: center;
+    padding: 40px !important;
+    color: #94a3b8;
+    font-size: 16px;
+    background-color: #f8fafc;
+}
+
+.noDataWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.userCell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.imageWrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;  
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f6;
+}
+
+.userImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #6366f1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+}

@@ -1,0 +1,281 @@
+ 
+.tableContainer {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+    direction: rtl;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+ }
+
+ .customTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;  
+}
+
+ .customTable th {
+    background: #E8E7FF;
+    padding: 18px;
+    text-align: right;
+    color: #5854a4;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+ .customTable td {
+    padding: 10px 5px;
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    color: #444;
+}
+
+ .planPrimaryInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.planNameText {
+    font-weight: 700;
+    color: #5854a4;
+    font-size: 1rem;
+}
+
+.planDescriptionText {
+    font-size: 0.75rem;
+    color: #888;
+    
+}
+
+  .planNameText {
+    display: block;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+ .planDescriptionTruncated {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;  
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    font-size: 11px;  
+    color: #7f8c8d;  
+    line-height: 1.4;
+    max-width: 120px;  
+    margin: 0;
+}
+
+ .planPrimaryInfo:hover .planDescriptionTruncated {
+    color: #34495e;  
+}
+
+  .descriptionWrapper {
+    min-width: 120px;
+}
+.descriptionList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.descriptionList li {
+    font-size: 0.8rem;
+    color: #666;
+    position: relative;
+    padding-right: 15px;
+    line-height: 1.4;
+}
+.descriptionList li::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    background-color: #5854a4;
+    border-radius: 50%;
+}
+
+ .priceWrapper {
+    display: flex;
+    flex-direction: column;
+}
+.priceAmount {
+    font-weight: 800;
+    color: #27ae60;
+    font-size: 1.1rem;
+}
+.durationLabel {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+ .limitsInfo {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+ .permissionsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.permYes {
+    color: #27ae60;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.permNo {
+    color: #e74c3c;
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+ .statsBadge {
+    background: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #eee;
+    display: inline-block;
+}
+.statsNumber {
+    display: block;
+    font-weight: 700;
+    color: #5854a4;
+}
+.statsLabel {
+    font-size: 0.6rem;
+    color: #888;
+}
+
+ .badgeActive {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+.badgeExpired {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+ .actionButtons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.btnEdit {
+    background: #5854A4;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.btnDelete {
+    background: #E74C3C;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+ .tableContainer::-webkit-scrollbar {
+    height: 6px;
+}
+.tableContainer::-webkit-scrollbar-thumb {
+    background: #c7c5ff;
+    border-radius: 10px;
+}
+
+ .customTable tbody tr:hover {
+    background-color: #fcfcff;
+    transition: background 0.2s ease;
+}
+
+ 
+@media (max-width: 768px) {
+
+     .customTable th, .customTable td {
+        font-size: 0.8rem;
+        padding: 10px 12px;
+    }
+
+     .customTable {
+        min-width: 550px;
+    }
+
+     .planNameText {
+        font-size: 0.9rem;
+    }
+    .planDescriptionText {
+        font-size: 0.7rem;
+    }
+
+     .descriptionList li {
+        font-size: 0.7rem;
+    }
+
+     .badgeActive, .badgeExpired {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+     .btnEdit, .btnDelete {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 6px;
+    }
+
+    .actionButtons {
+        gap: 6px;
+    }
+}
+
+ @media (max-width: 768px) {
+    .actionButtons {
+        justify-content: flex-start;  
+        flex-wrap: nowrap; 
+        gap: 6px;
+    }
+
+    .btnEdit, .btnDelete {
+        font-size: 0.7rem;
+        padding: 4px 8px;  
+        border-radius: 6px;
+    }
+}
+
+
+.noDataCell {
+    text-align: center;
+    padding: 40px !important;
+    color: #94a3b8;
+    font-size: 16px;
+    background-color: #f8fafc;
+}
+
+.noDataWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

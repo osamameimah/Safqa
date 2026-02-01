@@ -1,0 +1,126 @@
+.profileWrapper {
+    padding: 15px;
+    direction: rtl;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.largeAvatar {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #5854a4, #837fc9);
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(88, 84, 164, 0.25);
+}
+
+.headerInfo { display: flex; flex-direction: column; }
+
+.profileName { font-size: 1.6rem; color: #1a1a1a; margin-bottom: 5px; font-weight: 700; }
+.profileSubText { margin: 0; color: #666; font-size: 1rem; font-weight: 500; }
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 20px;
+   
+}
+
+.sectionTitle {
+    grid-column: span 2;
+    background: #f4f7fe;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #5854a4;
+    margin-top: 15px;
+}
+
+.infoItem label {
+    font-size: 0.85rem;
+    color: #a0acb9;
+    font-weight: 600;
+}
+
+.infoItem p {
+    font-size: 1rem;
+    color: #2d3748;
+    font-weight: 500;
+    margin: 2px 0 0 0;
+    word-break: break-all;
+}
+
+.statusBadgeActive,
+.statusBadgePending {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.statusBadgeActive {
+    background: #d1fae5;
+    color: #065f46;
+    font-size: 0.8rem;
+}
+
+.statusBadgePending {
+    background: #fff7ed;
+    color: #c2410c;
+    font-size: 0.8rem;
+}
+
+.codeText {
+    font-family: monospace;
+    font-size: 0.85rem;
+    background: #f0f0f0;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+
+ 
+@media (max-width: 1024px) {
+    .largeAvatar { width: 70px; height: 70px; font-size: 1.8rem; }
+    .profileName { font-size: 1.4rem; }
+    .profileSubText { font-size: 0.95rem; }
+    .infoGrid { gap: 20px; }
+    .sectionTitle { font-size: 0.8rem; padding: 8px 12px; }
+    .infoItem label { font-size: 0.75rem; }
+    .infoItem p { font-size: 0.9rem; }
+    .statusBadgeActive, .statusBadgePending { font-size: 0.7rem; padding: 4px 12px; }
+    .codeText { font-size: 0.75rem; }
+}
+
+@media (max-width: 768px) {
+    .profileHeader { flex-direction: column; align-items: center; text-align: center; gap: 15px; }
+    .largeAvatar { width: 60px; height: 60px; font-size: 1.5rem; }
+    .profileName { font-size: 1.2rem; }
+    .profileSubText { font-size: 0.85rem; }
+    .infoGrid { gap: 15px; }    
+}
+
+@media (max-width: 480px) {
+    .infoGrid { grid-template-columns: 1fr;  display: flex;
+    flex-direction: column; }
+    .sectionTitle { font-size: 0.75rem; padding: 6px 10px; }
+    .infoItem label { font-size: 0.7rem; }
+    .infoItem p { font-size: 0.8rem; }
+    .statusBadgeActive, .statusBadgePending { font-size: 0.65rem; padding: 3px 10px; }
+    .codeText { font-size: 0.7rem; padding: 2px 5px; }
+}

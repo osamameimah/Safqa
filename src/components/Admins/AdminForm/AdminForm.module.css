@@ -1,0 +1,139 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+     width: 100%;
+    max-width: 500px; 
+    margin: 0 auto;   
+    box-sizing: border-box;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+}
+
+.inputGroup label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #475569;
+}
+
+.inputField {
+    padding: 10px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background-color: #fff;
+    direction: rtl;
+    text-align: right;
+    width: 100%;  
+    box-sizing: border-box;
+}
+
+.inputField:focus {
+    border-color: #5854a4;
+    box-shadow: 0 0 0 4px rgba(88, 84, 164, 0.1);
+    outline: none;
+}
+
+.inputError {
+    border-color: #ef4444 !important;
+}
+
+.errorMessage {
+    color: #ef4444;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.submitBtn {
+    background-color: #5854a4;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+.submitBtn:hover {
+    background-color: #48448a;
+}
+
+ @media (max-width: 600px) {
+    .formContainer {
+        padding: 10px;
+        gap: 14px;
+    }
+
+    .inputField {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .submitBtn {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .formContainer {
+        padding: 10px;
+        gap: 12px;
+    }
+
+    .inputGroup label {
+        font-size: 13px;
+    }
+
+    .inputField {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .errorMessage {
+        font-size: 11px;
+    }
+
+    .submitBtn {
+        font-size: 14px;
+        padding: 11px;
+    }
+}
+@media (max-width: 400px) {
+    .formContainer {
+        padding: 8px;
+        gap: 10px;
+    }
+
+    .inputGroup label {
+        font-size: 12px;
+    }
+
+    .inputField {
+        font-size: 12px;
+        padding: 7px 9px;
+        border-radius: 8px;
+    }
+
+    .errorMessage {
+        font-size: 10.5px;
+    }
+
+    .submitBtn {
+        font-size: 13px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}

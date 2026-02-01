@@ -1,0 +1,182 @@
+.tableContainer {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    direction: rtl;
+}
+
+.customTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.customTable th {
+    background: #e8e7ff;
+    padding: 15px;
+    text-align: right;
+    color: #5854a4;
+    font-size: 0.85rem; 
+}
+
+.customTable td {
+    padding: 12px 14px;  
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 0.9rem;   
+}
+
+ .userCell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 35px;  
+    height: 35px;
+    border-radius: 8px;
+    background: #eeedff;
+    color: #5854a4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.companyName,
+.userEmail {
+    font-size: 0.75rem;
+    color: #5854a4;
+}
+
+ .planBadge {
+    background-color: #f0f0ff;
+    color: #5854a4;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.badgeActive,
+.badgePending {
+    padding: 4px 10px;
+    border-radius: 18px;
+    font-size: 0.75rem;
+}
+
+.badgeActive { background: #d1fae5; color: #065f46; }
+.badgePending { background: #fff7ed; color: #c2410c; }
+
+ .actionButtons {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.btnApprove,
+.btnInfo,
+.btnDelete {
+    padding: 5px 10px;   
+    font-size: 0.75rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+ @media (max-width: 768px) {
+    .tableContainer {
+        overflow-x: auto;  
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .customTable {
+        min-width: 500px;  
+    }
+
+    .customTable th,
+    .customTable td {
+        padding: 10px 8px;
+        font-size: 0.8rem;  
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+        font-size: 0.75rem;
+    }
+
+    .userName { font-size: 0.75rem; }
+    .companyName,
+    .userEmail { font-size: 0.7rem; }
+
+    .planBadge,
+    .badgeActive,
+    .badgePending { padding: 3px 8px; font-size: 0.7rem; }
+
+    .btnApprove,
+    .btnInfo,
+    .btnDelete { padding: 4px 8px; font-size: 0.7rem; }
+}
+ .actionButtons {
+    display: flex;
+    gap: 8px;  
+    justify-content: center;
+}
+
+.btnApprove { background: #27ae60; color: white; padding: 6px 14px; border-radius: 8px; border: none; cursor: pointer; }
+.btnInfo { background: #5854a4; color: white; padding: 6px 14px; border-radius: 8px; border: none; cursor: pointer; }
+.btnDelete { background: #e74c3c; color: white; padding: 6px 14px; border-radius: 8px; border: none; cursor: pointer; }
+
+ @media (max-width: 768px) {
+    .tableContainer {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .customTable { min-width: 500px; }
+
+    .customTable th,
+    .customTable td {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+    }
+
+    .avatar { width: 30px; height: 30px; font-size: 0.75rem; }
+    .userName { font-size: 0.75rem; }
+    .companyName, .userEmail { font-size: 0.7rem; }
+
+    .planBadge, .badgeActive, .badgePending { padding: 3px 8px; font-size: 0.7rem; }
+
+    .btnApprove, .btnInfo, .btnDelete { 
+        padding: 5px 10px;  
+        font-size: 0.75rem;
+        border-radius: 6px;  
+    }
+}
+
+.noDataCell {
+    text-align: center;
+    padding: 40px !important;
+    color: #94a3b8;
+    font-size: 16px;
+    background-color: #f8fafc;
+}
+
+.noDataWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,0 +1,490 @@
+.container {
+     direction: rtl;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.headerSection {
+display: flex;
+  flex-direction: row;  
+  justify-content: space-between; 
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap; 
+}
+
+.addNewBtn {
+    background: #5854a4;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(88, 84, 164, 0.2);
+   width: fit-content;  
+  white-space: nowrap;
+ }
+
+.tableContainer {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+
+.customTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.customTable th {
+    background: #E8E7FF;
+    padding: 18px;
+    text-align: right;
+    color: #5854a4;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.customTable td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #f9f9f9;
+    color: #444;
+}
+
+.planNameCell {
+    font-weight: 700;
+    color: #222;
+    text-transform: capitalize;
+}
+
+.badgeActive { background: #d1fae5; color: #065f46; padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; }
+.badgeExpired { background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; }
+
+.actionButtons { display: flex; gap: 8px; justify-content: center; }
+
+.btnEdit { background: #5854A4; color: white; padding: 6px 14px; border-radius: 8px; border: none; cursor: pointer; }
+.btnDelete { background: #E74C3C; color: white; padding: 6px 14px; border-radius: 8px; border: none; cursor: pointer; }
+
+ .modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modalCard {
+    background: white;
+    width: 480px;
+    border-radius: 20px;
+    padding: 25px;
+    animation: zoomIn 0.3s ease;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+ .inputGroup:first-child {
+    grid-column: span 2;
+}
+
+.inputGroup label { font-size: 0.85rem; font-weight: 600; color: #555; }
+.inputGroup input { padding: 10px; border: 1px solid #ddd; border-radius: 10px; }
+
+.submitBtn {
+    grid-column: span 2;
+    background: #5854a4;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.deleteView { text-align: center; }
+.confirmActions { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+.dangerBtn { background: #e74c3c; color: white; padding: 10px 25px; border-radius: 10px; border: none; cursor: pointer; }
+.cancelBtn { background: #eee; padding: 10px 25px; border-radius: 10px; border: none; cursor: pointer; }
+
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+ 
+.addNewBtn {
+  background: #5854a4;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(88, 84, 164, 0.2);
+  align-self: flex-start;
+  width: auto;
+  white-space: nowrap;  
+}
+
+
+ 
+.featureBadges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.feat {
+    font-size: 0.75rem;
+    background: #f0efff;
+    color: #5854a4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #e0dfff;
+}
+
+.checkboxGroup {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.checkboxGroup label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: #444;
+}
+
+.checkboxGroup input {
+    width: 16px;
+    height: 16px;
+    accent-color: #5854a4;
+}
+
+ .modalCard {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+ .planPrimaryInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.planNameText {
+    font-weight: 700;
+    color: #5854a4;
+    font-size: 1rem;
+}
+.planDescriptionText {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+ .priceWrapper {
+    display: flex;
+    flex-direction: column;
+}
+.priceAmount {
+    font-weight: 800;
+    color: #27ae60;  
+    font-size: 1.1rem;
+}
+.durationLabel {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+ .limitsInfo {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+ .permissionsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.permYes {
+    color: #27ae60;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.permNo {
+    color: #e74c3c;
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+ .statsBadge {
+    background: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #eee;
+    display: inline-block;
+}
+.statsNumber {
+    display: block;
+    font-weight: 700;
+    color: #5854a4;
+}
+.statsLabel {
+    font-size: 0.6rem;
+    color: #888;
+}
+
+ .customTable tbody tr:hover {
+    background-color: #fcfcff;
+    transition: background 0.2s ease;
+}
+
+.descriptionWrapper {
+    min-width: 110px;  
+}
+
+.descriptionList {
+    list-style: none;  
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.descriptionList li {
+    font-size: 0.8rem;
+    color: #666;
+    position: relative;
+    padding-right: 15px;  
+    line-height: 1.4;
+}
+
+ .descriptionList li::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    background-color: #5854a4;  
+    border-radius: 50%;
+}
+
+.featureItem {
+    color: #5854a4 !important;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+ .formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+ .inputGroup:nth-child(1),
+.inputGroup:nth-child(2),
+.checkboxSection,
+.submitBtn {
+    grid-column: span 2;
+}
+
+.sectionTitle {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #5854a4;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #e0dfff;
+    padding-bottom: 5px;
+}
+
+.checkboxSection {
+    background: #fcfcff;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #f0efff;
+}
+
+.checkboxGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.checkLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.2s;
+}
+
+.checkLabel:hover {
+    color: #5854a4;
+}
+
+ .deleteView {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.deleteIcon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.deleteSubText {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 8px;
+}
+
+.modalHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     padding: 15px;
+ }
+
+.modalHeader h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.closeBtn:hover {
+    color: #e74c3c;
+}
+
+ 
+@media (max-width: 1024px) {
+  .customTable {
+    font-size: 0.85rem;
+  }
+}
+
+ @media (max-width: 768px) {
+
+   .headerSection {
+    gap: 12px;
+  }
+
+  .addNewBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+   .tableContainer {
+    overflow-x: auto;
+  }
+
+  .customTable thead {
+    display: none;
+  }
+
+  .customTable,
+  .customTable tbody,
+  .customTable tr,
+  .customTable td {
+    display: block;
+    width: 100%;
+  }
+
+  .customTable tr {
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 12px;
+  }
+
+  .customTable td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.8rem;
+  }
+
+  .customTable td:last-child {
+    border-bottom: none;
+  }
+
+  .actionButtons {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .priceWrapper,
+  .permissionsWrapper,
+  .limitsInfo {
+    align-items: flex-end;
+    text-align: left;
+  }
+
+  .statsBadge {
+    margin-top: 5px;
+  }
+}
+@media (max-width: 768px) {
+
+  .modalCard {
+    width: 95%;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .modalHeader h2 {
+    font-size: 1rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .headerSection {
+    flex-direction: column;  
+    align-items: stretch; 
+  }
+  
+  .searchBox {
+    max-width: 100%; 
+  }
+}
+

@@ -1,0 +1,82 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  direction: rtl;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 5px; 
+}
+
+.pageBtn {
+  min-width: 34px; 
+  height: 34px;     
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #475569;
+  border-radius: 6px;  
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.85rem;  
+  transition: all 0.2s ease;
+}
+
+.pageBtn:hover:not(:disabled):not(.active) {
+  border-color: #5854a4;
+  color: #5854a4;
+  background: #f8f7ff;
+}
+
+.active {
+  background: #5854a4 !important;
+  color: white !important;
+  border-color: #5854a4 !important;
+}
+
+.navBtn {
+  padding: 0 12px;
+  min-width: auto;
+  font-size: 0.8rem;
+}
+
+.pageBtn:disabled {
+  background: #f1f5f9;
+  color: #cbd5e1;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+.dots {
+  color: #94a3b8;
+  padding: 0 5px;
+  font-size: 0.9rem;
+}
+
+ @media (max-width: 600px) {
+  .pagination {
+    gap: 3px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pageBtn {
+    min-width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+    border-radius: 4px;  
+  }
+
+  .navBtn {
+    padding: 0 8px;
+  }
+
+   .dots {
+    display: none;
+  }
+}

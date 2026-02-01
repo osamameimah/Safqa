@@ -1,0 +1,83 @@
+.formGrid {
+     grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup { display: flex; flex-direction: column; gap: 7px; }
+.inputGroup:first-child, .inputGroup:nth-child(2), .featuresSection, .checkboxSection, .submitBtn {
+    grid-column: span 2;
+}
+
+.inputGroup label { font-size: 0.85rem; font-weight: 600; color: #555; }
+.inputGroup input { padding: 10px; border: 1px solid #ddd; border-radius: 10px; outline: none; }
+.inputGroup input:focus { border-color: #5854a4; }
+
+.limitControl { display: flex; gap: 8px; }
+.selectType { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #ddd; background: #f9f9f9; }
+.numInput { flex: 1; }
+
+.featuresSection { background: #fcfcff; padding: 10px; border-radius: 12px; border: 1px solid #eee; }
+.featureInputRow { display: flex; gap: 10px; margin-bottom: 10px; }
+.featureInputRow input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 8px; }
+.featureInputRow button { background: #5854a4; color: white; border: none; padding: 0 15px; border-radius: 8px; cursor: pointer; }
+
+.featuresTags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { background: #e8e7ff; color: #5854a4; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; }
+.tag b { cursor: pointer; color: #e74c3c; font-size: 1.1rem; }
+
+.checkboxSection { background: #fcfcff; padding: 15px; border-radius: 12px; border: 1px solid #f0efff; }
+.sectionTitle { display: block; font-size: 0.85rem; font-weight: 700; color: #5854a4; margin-bottom: 10px; border-bottom: 1px dashed #e0dfff; padding-bottom: 5px; }
+.checkboxGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.checkLabel { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; cursor: pointer; color: #555; }
+.checkLabel input { accent-color: #5854a4; width: 18px; height: 18px; }
+
+.submitBtn { background: #5854a4; color: white; padding: 12px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer; margin-top: 10px; font-size: 1rem; }
+.error { color: #e74c3c; font-size: 0.75rem; font-weight: 600; }
+
+ 
+
+@media (max-width: 768px) {
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .inputGroup,
+  .featuresSection,
+  .checkboxSection,
+  .submitBtn {
+    grid-column: span 1;
+  }
+
+  .limitControl {
+    flex-direction: column;
+  }
+
+  .featureInputRow {
+    flex-direction: column;
+  }
+
+  .featureInputRow button {
+    width: 100%;
+  }
+
+  .checkboxGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+ @media (max-width: 480px) {
+
+   .featureInputRow button {
+    padding: 6px 10px;    
+    font-size: 0.85rem;  
+  }
+
+   .submitBtn {
+    padding: 8px;        
+    font-size: 0.9rem;   
+  }
+}
