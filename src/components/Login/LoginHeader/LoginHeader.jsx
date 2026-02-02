@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./LoginHeader.module.css";
-import Fawateer from "../../../assets/Fawateer.jpg";
+import Fawateer from "../../../assets/Logo.png";
 
 const LoginHeader = () => (
   <header className={styles.formHeader}>

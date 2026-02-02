@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import styles from './Layout.module.css';
-import Logo from "../assets/Fawateer.jpg";
+import Logo from "../assets/Logo.png";
 import { auth } from "../firebase/firebaseConfig";
 
 const Layouts = () => {
