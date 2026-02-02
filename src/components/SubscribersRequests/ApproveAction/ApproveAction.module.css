@@ -61,3 +61,35 @@
         font-size: 0.9rem;  
     }
 }
+
+.optionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.optionItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.optionItem:hover { background: #f8fafc; }
+
+.optionItem.selected {
+    border-color: #4f46e5;
+    background-color: #f5f3ff;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}

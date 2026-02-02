@@ -124,3 +124,50 @@
     .statusBadgeActive, .statusBadgePending { font-size: 0.65rem; padding: 3px 10px; }
     .codeText { font-size: 0.7rem; padding: 2px 5px; }
 }
+
+
+/* التنسيق الأساسي للبطاقة */
+.statusBadge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* حالة نشط - أخضر */
+.active {
+    background-color: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+/* حالة قيد الانتظار - أصفر */
+.pending {
+    background-color: #fef9c3;
+    color: #a16207;
+    border: 1px solid #fef08a;
+}
+
+/* حالة منتهي - رمادي غامق */
+.expired {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+}
+
+/* حالة ملغي - برتقالي */
+.cancelled {
+    background-color: #ffedd5;
+    color: #c2410c;
+    border: 1px solid #fed7aa;
+}
+
+/* حالة مرفوض - أحمر */
+.rejected {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}

@@ -36,25 +36,21 @@ const SubscribersRequests = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [activeModal]);
 
-     useEffect(() => {
+    useEffect(() => {
         const unsub = onSnapshot(collection(db, "user_subscriptions"), async (snapshot) => {
             const allData = await Promise.all(snapshot.docs.map(async (subscriptionDoc) => {
                 const subData = subscriptionDoc.data();
 
-                 let userData = { name: "مستخدم غير معروف", email: "لا يوجد بريد", companyName: "بدون شركة" };
+                let userData = { name: "مستخدم غير معروف", email: "لا يوجد بريد", companyName: "بدون شركة" };
                 if (subData.userId) {
                     const userDoc = await getDoc(doc(db, "users", subData.userId));
-                    if (userDoc.exists()) {
-                        userData = userDoc.data();
-                    }
+                    if (userDoc.exists()) userData = userDoc.data();
                 }
 
-                 let planData = { name: "باقة غير معروفة" };
+                let planData = { name: "باقة غير معروفة" };
                 if (subData.planId) {
                     const planDoc = await getDoc(doc(db, "subscription_plans", subData.planId));
-                    if (planDoc.exists()) {
-                        planData = planDoc.data();
-                    }
+                    if (planDoc.exists()) planData = planDoc.data();
                 }
 
                 return {
@@ -69,9 +65,8 @@ const SubscribersRequests = () => {
                 };
             }));
 
-              const pendingRequests = allData;          
-            setRequests(pendingRequests);
-            setFilteredData(pendingRequests);
+            setRequests(allData);
+            setFilteredData(allData);
             setLoading(false);
         });
 
@@ -86,32 +81,27 @@ const SubscribersRequests = () => {
         setFilteredData(results);
     }, [searchTerm, requests]);
 
-     const handleApprove = async (id) => {
+    // دالة تحديث الحالة الجديدة الشاملة
+    const handleUpdateStatus = async (id, newStatus) => {
         try {
             const subRef = doc(db, "user_subscriptions", id);
-            await updateDoc(subRef, {
-                status: "active",
-                approvedAt: new Date().toISOString(),
-                approvedBy: "admin"
-            });
+            const updateData = {
+                status: newStatus,
+                updatedAt: new Date().toISOString(),
+                approvedBy: "Super Admin" 
+            };
 
-             setRequests(prev => prev.filter(req => req.id !== id));
-            setFilteredData(prev => prev.filter(req => req.id !== id));
-
-            toast.success("تم تفعيل الاشتراك بنجاح");
+            await updateDoc(subRef, updateData);
+            toast.success("تم تحديث حالة الاشتراك بنجاح");
             closeModal();
         } catch (error) {
-            toast.error("خطأ في التفعيل");
+            toast.error("حدث خطأ أثناء تحديث الحالة");
         }
     };
 
-     const handleDelete = async (id) => {
+    const handleDelete = async (id) => {
         try {
             await deleteDoc(doc(db, "user_subscriptions", id));
-
-             setRequests(prev => prev.filter(req => req.id !== id));
-            setFilteredData(prev => prev.filter(req => req.id !== id));
-
             toast.error("تم حذف الطلب بنجاح");
             closeModal();
         } catch (error) {
@@ -142,7 +132,7 @@ const SubscribersRequests = () => {
             </div>
 
             {loading ? (
-                <p style={{ textAlign: 'center', padding: '20px' }}>جاري تحميل الطلبات...</p>
+                <p style={{ textAlign: 'center', padding: '20px' }}>جاري التحميل...</p>
             ) : (
                 <RequestsTable data={filteredData} onOpenModal={openModal} />
             )}
@@ -152,18 +142,18 @@ const SubscribersRequests = () => {
                     <div className={`${styles.modalCard} ${activeModal === 'details' ? styles.wideModal : ''}`} ref={modalRef}>
                         <div className={styles.modalHeader}>
                             <h2>
-                                {activeModal === 'details' ? "تفاصيل الاشتراك" :
-                                    activeModal === 'approve' ? "تأكيد تفعيل الحساب" : "حذف الطلب"}
+                                {activeModal === 'details' ? "تفاصيل المشترك" :
+                                    activeModal === 'status' ? "تعديل حالة الاشتراك" : "حذف السجل"}
                             </h2>
                             <button className={styles.closeBtn} onClick={closeModal}>&times;</button>
                         </div>
                         <div className={styles.modalContent}>
                             {activeModal === 'details' && <DetailsView user={selectedUser} />}
-
-                            {activeModal === 'approve' && (
+                            
+                            {activeModal === 'status' && (
                                 <ApproveAction
                                     user={selectedUser}
-                                    onConfirm={() => handleApprove(selectedUser.id)}
+                                    onConfirm={(status) => handleUpdateStatus(selectedUser.id, status)}
                                     onCancel={closeModal}
                                 />
                             )}

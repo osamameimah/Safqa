@@ -56,7 +56,7 @@ const Layouts = () => {
 
                     <NavLink to="subscripe" className={({ isActive }) => isActive ? styles.active : ''}>
                         <span className={styles.icon}>👥</span>
-                        <span className={styles.linkText}>المشتركين</span>
+                        <span className={styles.linkText}>المستخدمين</span>
                     </NavLink>
 
                      {isSuperAdmin && (

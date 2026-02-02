@@ -9,20 +9,22 @@ const RequestsTable = ({ data = [], onOpenModal }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    // حساب إجمالي الصفحات مرة واحدة لاستخدامه في الكود
     const totalPages = Math.max(1, Math.ceil(data.length / itemsPerPage));
 
-    // تعديل: العودة للصفحة السابقة إذا تم حذف آخر عنصر في الصفحة الحالية
     useEffect(() => {
-        if (currentPage > totalPages) {
-            setCurrentPage(totalPages);
-        }
+        if (currentPage > totalPages) setCurrentPage(totalPages);
     }, [data.length, totalPages, currentPage]);
 
-    // حساب نطاق العناصر المعروضة
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    // توحيد مسميات الحالات بالعربي
+    const statusMap = {
+        active: { label: "نشط", class: styles.badgeActive },
+        pending: { label: "قيد الانتظار", class: styles.badgePending },
+        expired: { label: "منتهي", class: styles.badgeExpired },
+        cancelled: { label: "ملغي", class: styles.badgeCancelled },
+        rejected: { label: "مرفوض", class: styles.badgeRejected }
+    };
 
     return (
         <>
@@ -39,60 +41,45 @@ const RequestsTable = ({ data = [], onOpenModal }) => {
                     </thead>
                     <tbody>
                         {currentItems.length > 0 ? (
-                            currentItems.map((sub) => (
-                                <tr key={sub.id}>
-                                    <td>
-                                        <div className={styles.userCell}>
-                                            <div className={styles.avatar}>
-                                                {sub.name?.charAt(0).toUpperCase() || "?"}
+                            currentItems.map((sub) => {
+                                const statusInfo = statusMap[sub.status] || { label: sub.status, class: styles.badgePending };
+                                return (
+                                    <tr key={sub.id}>
+                                        <td>
+                                            <div className={styles.userCell}>
+                                                <div className={styles.avatar}>{sub.name?.charAt(0)}</div>
+                                                <div className={styles.userInfo}>
+                                                    <span className={styles.userName}>{sub.name}</span>
+                                                    <span className={styles.companyName}>{sub.companyName}</span>
+                                                </div>
                                             </div>
-                                            <div className={styles.userInfo}>
-                                                <span className={styles.userName}>{sub.name}</span>
-                                                <span className={styles.companyName}>{sub.companyName}</span>
-                                                <span className={styles.userEmail}>{sub.email}</span>
+                                        </td>
+                                        <td><span className={styles.planBadge}>{sub.planName}</span></td>
+                                        <td>{sub.endDate ? sub.endDate.split('T')[0] : "---"}</td>
+                                        <td>
+                                            <span className={`${styles.statusBadge} ${statusInfo.class}`}>
+                                                {statusInfo.label}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div className={styles.actionButtons}>
+                                                {/* زر تعديل الحالة متاح دائماً الآن */}
+                                                <ApproveButton onClick={() => onOpenModal('status', sub)} />
+                                                <ViewButton onClick={() => onOpenModal('details', sub)} />
+                                                <DeleteButton onClick={() => onOpenModal('delete', sub)} />
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span className={styles.planBadge}>{sub.planName}</span>
-                                    </td>
-                                    <td>
-                                         {sub.endDate ? sub.endDate.split('T')[0] : "---"}
-                                    </td>
-                                    <td>
-                                        <span className={sub.status === "active" ? styles.badgeActive : styles.badgePending}>
-                                            {sub.status === "active" ? "نشط" : "قيد الانتظار"}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div className={styles.actionButtons}>
-                                            {sub.status !== "active" && (
-                                                <ApproveButton onClick={() => onOpenModal('approve', sub)} />)}
-                                            <ViewButton onClick={() => onOpenModal('details', sub)} />
-                                            <DeleteButton onClick={() => onOpenModal('delete', sub)} />
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))
+                                        </td>
+                                    </tr>
+                                );
+                            })
                         ) : (
-                            <tr>
-                                <td colSpan="5" className={styles.noDataCell}>
-                                    <div className={styles.noDataWrapper}>
-                                        <span>📭 لا توجد طلبات اشتراك حالياً</span>
-                                    </div>
-                                </td>
-                            </tr>
+                            <tr><td colSpan="5" style={{textAlign:'center', padding:'20px'}}>لا توجد بيانات</td></tr>
                         )}
                     </tbody>
                 </table>
             </div>
-
-             {data.length > itemsPerPage && (
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={(page) => setCurrentPage(page)}
-                />
+            {data.length > itemsPerPage && (
+                <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
             )}
         </>
     );

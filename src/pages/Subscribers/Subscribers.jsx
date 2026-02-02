@@ -22,7 +22,7 @@ const Subscribers = () => {
     const [allPlans, setAllPlans] = useState([]);
     const modalRef = useRef();
 
-     useEffect(() => {
+    useEffect(() => {
         const handleClickOutside = (event) => {
             if (modalRef.current && !modalRef.current.contains(event.target)) closeModal();
         };
@@ -30,7 +30,8 @@ const Subscribers = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [activeModal]);
 
-     useEffect(() => {
+    // جلب الباقات
+    useEffect(() => {
         const unsubPlans = onSnapshot(collection(db, "subscription_plans"), (snapshot) => {
             const plans = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             setAllPlans(plans);
@@ -38,13 +39,14 @@ const Subscribers = () => {
         return () => unsubPlans();
     }, []);
 
-     useEffect(() => {
+    // جلب المستخدمين مع اشتراكاتهم
+    useEffect(() => {
         const unsubUsers = onSnapshot(collection(db, "users"), async (userSnapshot) => {
             const usersData = await Promise.all(userSnapshot.docs.map(async (userDoc) => {
                 const userData = userDoc.data();
                 const userId = userDoc.id;
 
-                 const subQuery = query(collection(db, "user_subscriptions"), where("userId", "==", userId));
+                const subQuery = query(collection(db, "user_subscriptions"), where("userId", "==", userId));
                 const subSnapshot = await getDocs(subQuery);
                 
                 let subscription = null;
@@ -67,7 +69,8 @@ const Subscribers = () => {
                     plan: userPlan?.name || "لا يوجد اشتراك",
                     planId: subscription?.planId || "",
                     endDate: subscription?.endDate || "---",
-                    status: subscription?.status === "active" ? "نشط" : (subscription ? "منتهي" : "غير مشترك")
+                    // تمرير الحالة كما هي من Firebase (active, pending, etc.)
+                    status: subscription?.status || "none" 
                 };
             }));
 
@@ -79,7 +82,7 @@ const Subscribers = () => {
         return () => unsubUsers();
     }, [allPlans]);
 
-     useEffect(() => {
+    useEffect(() => {
         const results = subscribers.filter(s =>
             s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             s.company.toLowerCase().includes(searchTerm.toLowerCase())
@@ -97,9 +100,9 @@ const Subscribers = () => {
         setSelectedUser(null);
     };
 
-     const handleUpdate = async (updatedData) => {
+    const handleUpdate = async (updatedData) => {
         try {
-             const userRef = doc(db, "users", selectedUser.userId);
+            const userRef = doc(db, "users", selectedUser.userId);
             await updateDoc(userRef, {
                 name: updatedData.name,
                 companyName: updatedData.company,
@@ -107,26 +110,13 @@ const Subscribers = () => {
                 address: updatedData.address  
             });
 
-             if (selectedUser.subscriptionId) {
+            if (selectedUser.subscriptionId) {
                 const subRef = doc(db, "user_subscriptions", selectedUser.subscriptionId);
-                await updateDoc(subRef, { planId: updatedData.planId });
+                await updateDoc(subRef, { 
+                    planId: updatedData.planId,
+                    status: updatedData.status // تحديث الحالة أيضاً إذا كان متاحاً في الفورم
+                });
             }
-
-             const updatedPlanName = allPlans.find(p => p.id === updatedData.planId)?.name || "لا يوجد اشتراك";
-            
-            setSubscribers(prev => prev.map(item => 
-                item.id === selectedUser.id 
-                ? { 
-                    ...item, 
-                    name: updatedData.name, 
-                    company: updatedData.company, 
-                    phone: updatedData.phone,
-                    address: updatedData.address, 
-                    plan: updatedPlanName,
-                    planId: updatedData.planId
-                  } 
-                : item
-            ));
 
             toast.success("تم تحديث بيانات المستخدم بنجاح");
             closeModal();
@@ -136,17 +126,13 @@ const Subscribers = () => {
         }
     };
 
-     const handleDelete = async () => {
+    const handleDelete = async () => {
         try {
             const targetId = selectedUser.userId;
             await deleteDoc(doc(db, "users", targetId));
-            
             if (selectedUser.subscriptionId) {
                 await deleteDoc(doc(db, "user_subscriptions", selectedUser.subscriptionId));
             }
-
-             setSubscribers(prev => prev.filter(item => item.id !== targetId));
-            
             toast.error("تم حذف المستخدم وكافة بياناته");
             closeModal();
         } catch (error) {
@@ -168,7 +154,7 @@ const Subscribers = () => {
             )}
             {activeModal && (
                 <div className={styles.modalOverlay}>
-                    <div className={styles.modalCard} ref={modalRef}>
+                    <div className={`${styles.modalCard} ${activeModal === 'details' ? styles.wideModal : ''}`} ref={modalRef}>
                         <div className={styles.modalHeader}>
                             <h2>
                                 {activeModal === 'details' && "ملف المستخدم"}
@@ -178,7 +164,7 @@ const Subscribers = () => {
                             <button className={styles.closeBtn} onClick={closeModal}>&times;</button>
                         </div>
                         <div className={styles.modalContent}>
-                            {activeModal === 'details' && <DetailsView user={selectedUser} onEdit={openModal} />}
+                            {activeModal === 'details' && <DetailsView user={selectedUser} onEdit={() => openModal('edit', selectedUser)} />}
                             {activeModal === 'edit' && <EditForm user={selectedUser} onSubmit={handleUpdate} onCancel={closeModal} plans={allPlans} />}
                             {activeModal === 'delete' && <DeleteDialog adminName={selectedUser?.name} onDelete={handleDelete} closeModal={closeModal} />}
                         </div>
