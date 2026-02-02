@@ -30,8 +30,7 @@ const Subscribers = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [activeModal]);
 
-    // جلب الباقات
-    useEffect(() => {
+     useEffect(() => {
         const unsubPlans = onSnapshot(collection(db, "subscription_plans"), (snapshot) => {
             const plans = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             setAllPlans(plans);
@@ -39,8 +38,7 @@ const Subscribers = () => {
         return () => unsubPlans();
     }, []);
 
-    // جلب المستخدمين مع اشتراكاتهم
-    useEffect(() => {
+     useEffect(() => {
         const unsubUsers = onSnapshot(collection(db, "users"), async (userSnapshot) => {
             const usersData = await Promise.all(userSnapshot.docs.map(async (userDoc) => {
                 const userData = userDoc.data();
@@ -69,8 +67,7 @@ const Subscribers = () => {
                     plan: userPlan?.name || "لا يوجد اشتراك",
                     planId: subscription?.planId || "",
                     endDate: subscription?.endDate || "---",
-                    // تمرير الحالة كما هي من Firebase (active, pending, etc.)
-                    status: subscription?.status || "none" 
+                     status: subscription?.status || "none" 
                 };
             }));
 
@@ -114,7 +111,7 @@ const Subscribers = () => {
                 const subRef = doc(db, "user_subscriptions", selectedUser.subscriptionId);
                 await updateDoc(subRef, { 
                     planId: updatedData.planId,
-                    status: updatedData.status // تحديث الحالة أيضاً إذا كان متاحاً في الفورم
+                    status: updatedData.status 
                 });
             }
 

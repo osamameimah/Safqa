@@ -17,8 +17,7 @@ const RequestsTable = ({ data = [], onOpenModal }) => {
 
     const currentItems = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-    // توحيد مسميات الحالات بالعربي
-    const statusMap = {
+     const statusMap = {
         active: { label: "نشط", class: styles.badgeActive },
         pending: { label: "قيد الانتظار", class: styles.badgePending },
         expired: { label: "منتهي", class: styles.badgeExpired },
@@ -63,8 +62,7 @@ const RequestsTable = ({ data = [], onOpenModal }) => {
                                         </td>
                                         <td>
                                             <div className={styles.actionButtons}>
-                                                {/* زر تعديل الحالة متاح دائماً الآن */}
-                                                <ApproveButton onClick={() => onOpenModal('status', sub)} />
+                                                 <ApproveButton onClick={() => onOpenModal('status', sub)} />
                                                 <ViewButton onClick={() => onOpenModal('details', sub)} />
                                                 <DeleteButton onClick={() => onOpenModal('delete', sub)} />
                                             </div>

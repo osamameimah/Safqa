@@ -9,8 +9,7 @@ const SubscribersTable = ({ data = [], onOpenModal }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
-    // قاموس الحالات لربط الاسم التقني بالعربي وبالستايل
-    const statusConfig = {
+     const statusConfig = {
         active: { label: "نشط", className: styles.badgeActive },
         pending: { label: "قيد الانتظار", className: styles.badgePending },
         expired: { label: "منتهي", className: styles.badgeExpired },
@@ -38,8 +37,7 @@ const SubscribersTable = ({ data = [], onOpenModal }) => {
                     <tbody>
                         {currentItems.length > 0 ? (
                             currentItems.map((sub) => {
-                                // جلب إعدادات الحالة بناءً على قيمتها
-                                const currentStatus = statusConfig[sub.status] || statusConfig.none;
+                                 const currentStatus = statusConfig[sub.status] || statusConfig.none;
                                 
                                 return (
                                     <tr key={sub.id}>

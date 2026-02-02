@@ -81,8 +81,7 @@ const SubscribersRequests = () => {
         setFilteredData(results);
     }, [searchTerm, requests]);
 
-    // دالة تحديث الحالة الجديدة الشاملة
-    const handleUpdateStatus = async (id, newStatus) => {
+     const handleUpdateStatus = async (id, newStatus) => {
         try {
             const subRef = doc(db, "user_subscriptions", id);
             const updateData = {

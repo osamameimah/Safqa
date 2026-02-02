@@ -126,8 +126,7 @@
 }
 
 
-/* التنسيق الأساسي للبطاقة */
-.statusBadge {
+ .statusBadge {
     display: inline-block;
     padding: 6px 16px;
     border-radius: 50px;
@@ -137,36 +136,31 @@
     text-align: center;
 }
 
-/* حالة نشط - أخضر */
-.active {
+ .active {
     background-color: #dcfce7;
     color: #15803d;
     border: 1px solid #bbf7d0;
 }
 
-/* حالة قيد الانتظار - أصفر */
-.pending {
+ .pending {
     background-color: #fef9c3;
     color: #a16207;
     border: 1px solid #fef08a;
 }
 
-/* حالة منتهي - رمادي غامق */
-.expired {
+ .expired {
     background-color: #f3f4f6;
     color: #374151;
     border: 1px solid #e5e7eb;
 }
 
-/* حالة ملغي - برتقالي */
-.cancelled {
+ .cancelled {
     background-color: #ffedd5;
     color: #c2410c;
     border: 1px solid #fed7aa;
 }
 
-/* حالة مرفوض - أحمر */
-.rejected {
+ .rejected {
     background-color: #fee2e2;
     color: #b91c1c;
     border: 1px solid #fecaca;

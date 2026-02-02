@@ -22,7 +22,7 @@ const DeletePlanModal = ({ planName, onDelete, closeModal }) => {
 
                 <div className={styles.textContent}>
                     <h3 className={styles.title}>هل أنت متأكد من حذف {planName}؟</h3>
-                    <p className={styles.subtitle}>سيتم حذف كافة البيانات المتعلقة بهذا المدير نهائياً.</p>
+                    <p className={styles.subtitle}>سيتم حذف كافة البيانات المتعلقة به نهائياً.</p>
                 </div>
             </div>
 
